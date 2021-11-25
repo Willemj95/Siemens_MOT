@@ -46,3 +46,51 @@ Traceback (most recent call last):
               └ <module 'json' from '/usr/lib/python3.8/json/__init__.py'>
 
 FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/ByteTrack/datasets/mot/annotations/val_half.json'
+2021-11-24 12:37:53.406 | INFO     | __main__:main:154 - Args: Namespace(batch_size=1, ckpt='weights/bytetrack_ablation.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/yolox_x_ablation.py', experiment_name='yolox_x_ablation', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.9, min_box_area=100, mot20=False, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2021-11-24 12:37:54.499 | INFO     | __main__:main:164 - Model Summary: Params: 99.00M, Gflops: 791.73
+2021-11-24 12:37:54.500 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2021-11-24 12:37:54.501 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (1944), thread 'MainThread' (140579942721344):
+Traceback (most recent call last):
+
+  File "tools/track.py", line 285, in <module>
+    launch(
+    └ <function launch at 0x7fdae2de7b80>
+
+> File "/home/ubuntu/ByteTrack/yolox/core/launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x7fdac9584160>
+
+  File "tools/track.py", line 167, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='weights/bytetrack_ablation.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, ...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='weights/bytetrack_ablation.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, ...
+                 │   └ <function Exp.get_eval_loader at 0x7fdac9584940>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "/home/ubuntu/ByteTrack/exps/example/mot/yolox_x_ablation.py", line 97, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "/home/ubuntu/ByteTrack/yolox/data/datasets/mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'val_half.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x7fdac95870d0>
+    │           │    │  │    │    │    └ '/home/ubuntu/ByteTrack/datasets/mot'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x7fdac95870d0>
+    │           │    │  │    └ <function join at 0x7fdb514ab550>
+    │           │    │  └ <module 'posixpath' from '/usr/lib/python3.8/posixpath.py'>
+    │           │    └ <module 'os' from '/usr/lib/python3.8/os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x7fdac95870d0>
+
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/pycocotools/coco.py", line 84, in __init__
+    dataset = json.load(open(annotation_file, 'r'))
+              │    │         └ '/home/ubuntu/ByteTrack/datasets/mot/annotations/val_half.json'
+              │    └ <function load at 0x7fdb50b061f0>
+              └ <module 'json' from '/usr/lib/python3.8/json/__init__.py'>
+
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/ByteTrack/datasets/mot/annotations/val_half.json'

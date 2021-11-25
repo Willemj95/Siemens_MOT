@@ -1,0 +1,182 @@
+2021-11-25 08:51:02.764 | INFO     | __main__:main:154 - Args: Namespace(batch_size=1, ckpt='pretrained/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/yolox_x_mix_mot20_ch.py', experiment_name='yolox_x_mix_mot20_ch', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.7, min_box_area=100, mot20=True, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2021-11-25 08:51:03.984 | INFO     | __main__:main:164 - Model Summary: Params: 99.00M, Gflops: 985.27
+2021-11-25 08:51:03.985 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2021-11-25 08:51:03.985 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (2509), thread 'MainThread' (140572129855296):
+Traceback (most recent call last):
+
+  File "tools/track.py", line 285, in <module>
+    launch(
+    └ <function launch at 0x7fd9112f9b80>
+
+> File "/home/ubuntu/ByteTrack/yolox/core/launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x7fd8f7a94160>
+
+  File "tools/track.py", line 167, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='pretrained/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='pretrained/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None...
+                 │   └ <function Exp.get_eval_loader at 0x7fd8f7a94a60>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "/home/ubuntu/ByteTrack/exps/example/mot/yolox_x_mix_mot20_ch.py", line 98, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "/home/ubuntu/ByteTrack/yolox/data/datasets/mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'test.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x7fd8f7a90d00>
+    │           │    │  │    │    │    └ '/home/ubuntu/ByteTrack/datasets/MOT20'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x7fd8f7a90d00>
+    │           │    │  │    └ <function join at 0x7fd97f9bd550>
+    │           │    │  └ <module 'posixpath' from '/usr/lib/python3.8/posixpath.py'>
+    │           │    └ <module 'os' from '/usr/lib/python3.8/os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x7fd8f7a90d00>
+
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/pycocotools/coco.py", line 84, in __init__
+    dataset = json.load(open(annotation_file, 'r'))
+              │    │         └ '/home/ubuntu/ByteTrack/datasets/MOT20/annotations/test.json'
+              │    └ <function load at 0x7fd97f0181f0>
+              └ <module 'json' from '/usr/lib/python3.8/json/__init__.py'>
+
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/ByteTrack/datasets/MOT20/annotations/test.json'
+2021-11-25 08:51:20.136 | INFO     | __main__:main:154 - Args: Namespace(batch_size=1, ckpt='weights/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/yolox_x_mix_mot20_ch.py', experiment_name='yolox_x_mix_mot20_ch', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.7, min_box_area=100, mot20=True, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2021-11-25 08:51:21.211 | INFO     | __main__:main:164 - Model Summary: Params: 99.00M, Gflops: 985.27
+2021-11-25 08:51:21.212 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2021-11-25 08:51:21.212 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (2541), thread 'MainThread' (140113266648896):
+Traceback (most recent call last):
+
+  File "tools/track.py", line 285, in <module>
+    launch(
+    └ <function launch at 0x7f6e3acecb80>
+
+> File "/home/ubuntu/ByteTrack/yolox/core/launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x7f6e21488160>
+
+  File "tools/track.py", line 167, in main
+    val_loader = exp.get_eval_loader(args.batch_size, is_distributed, args.test)
+                 │   │               │    │           │               │    └ False
+                 │   │               │    │           │               └ Namespace(batch_size=1, ckpt='weights/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, e...
+                 │   │               │    │           └ False
+                 │   │               │    └ 1
+                 │   │               └ Namespace(batch_size=1, ckpt='weights/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, e...
+                 │   └ <function Exp.get_eval_loader at 0x7f6e21488940>
+                 └ ╒══════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════...
+
+  File "/home/ubuntu/ByteTrack/exps/example/mot/yolox_x_mix_mot20_ch.py", line 98, in get_eval_loader
+    valdataset = MOTDataset(
+                 └ <class 'yolox.data.datasets.mot.MOTDataset'>
+
+  File "/home/ubuntu/ByteTrack/yolox/data/datasets/mot.py", line 39, in __init__
+    self.coco = COCO(os.path.join(self.data_dir, "annotations", self.json_file))
+    │           │    │  │    │    │    │                        │    └ 'test.json'
+    │           │    │  │    │    │    │                        └ <yolox.data.datasets.mot.MOTDataset object at 0x7f6e21483f70>
+    │           │    │  │    │    │    └ '/home/ubuntu/ByteTrack/datasets/MOT20'
+    │           │    │  │    │    └ <yolox.data.datasets.mot.MOTDataset object at 0x7f6e21483f70>
+    │           │    │  │    └ <function join at 0x7f6ea93b1550>
+    │           │    │  └ <module 'posixpath' from '/usr/lib/python3.8/posixpath.py'>
+    │           │    └ <module 'os' from '/usr/lib/python3.8/os.py'>
+    │           └ <class 'pycocotools.coco.COCO'>
+    └ <yolox.data.datasets.mot.MOTDataset object at 0x7f6e21483f70>
+
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/pycocotools/coco.py", line 84, in __init__
+    dataset = json.load(open(annotation_file, 'r'))
+              │    │         └ '/home/ubuntu/ByteTrack/datasets/MOT20/annotations/test.json'
+              │    └ <function load at 0x7f6ea8a0a1f0>
+              └ <module 'json' from '/usr/lib/python3.8/json/__init__.py'>
+
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/ByteTrack/datasets/MOT20/annotations/test.json'
+2021-11-25 09:01:08.315 | INFO     | __main__:main:154 - Args: Namespace(batch_size=1, ckpt='weights/bytetrack_x_mot20.pth.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/yolox_x_mix_mot20_ch.py', experiment_name='yolox_x_mix_mot20_ch', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.7, min_box_area=100, mot20=True, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2021-11-25 09:01:09.412 | INFO     | __main__:main:164 - Model Summary: Params: 99.00M, Gflops: 985.27
+2021-11-25 09:01:09.413 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2021-11-25 09:01:09.433 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2021-11-25 09:01:09.433 | INFO     | pycocotools.coco:__init__:88 - creating index...
+2021-11-25 09:01:09.434 | INFO     | pycocotools.coco:__init__:88 - index created!
+2021-11-25 09:01:15.118 | INFO     | __main__:main:186 - loading checkpoint
+2021-11-25 09:01:15.119 | ERROR    | yolox.core.launch:launch:90 - An error has been caught in function 'launch', process 'MainProcess' (2589), thread 'MainThread' (140036263491392):
+Traceback (most recent call last):
+
+  File "tools/track.py", line 285, in <module>
+    launch(
+    └ <function launch at 0x7f5c4d0fdb80>
+
+> File "/home/ubuntu/ByteTrack/yolox/core/launch.py", line 90, in launch
+    main_func(*args)
+    │          └ (╒══════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════...
+    └ <function main at 0x7f5c33897160>
+
+  File "tools/track.py", line 188, in main
+    ckpt = torch.load(ckpt_file, map_location=loc)
+           │     │    │                       └ 'cuda:0'
+           │     │    └ 'weights/bytetrack_x_mot20.pth.tar'
+           │     └ <function load at 0x7f5c5bd3c0d0>
+           └ <module 'torch' from '/home/ubuntu/.local/lib/python3.8/site-packages/torch/__init__.py'>
+
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/torch/serialization.py", line 594, in load
+    with _open_file_like(f, 'rb') as opened_file:
+         │               └ 'weights/bytetrack_x_mot20.pth.tar'
+         └ <function _open_file_like at 0x7f5c5bd394c0>
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/torch/serialization.py", line 230, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           │          │               └ 'rb'
+           │          └ 'weights/bytetrack_x_mot20.pth.tar'
+           └ <class 'torch.serialization._open_file'>
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/torch/serialization.py", line 211, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+          │           │                   │     └ 'rb'
+          │           │                   └ 'weights/bytetrack_x_mot20.pth.tar'
+          │           └ <torch.serialization._open_file object at 0x7f5be3935f70>
+          └ <class 'torch.serialization._open_file'>
+
+FileNotFoundError: [Errno 2] No such file or directory: 'weights/bytetrack_x_mot20.pth.tar'
+2021-11-25 09:01:59.916 | INFO     | __main__:main:154 - Args: Namespace(batch_size=1, ckpt='weights/bytetrack_x_mot20.tar', conf=0.01, devices=1, dist_backend='nccl', dist_url=None, exp_file='exps/example/mot/yolox_x_mix_mot20_ch.py', experiment_name='yolox_x_mix_mot20_ch', fp16=True, fuse=True, local_rank=0, machine_rank=0, match_thresh=0.7, min_box_area=100, mot20=True, name=None, nms=0.7, num_machines=1, opts=[], seed=None, speed=False, test=False, track_buffer=30, track_thresh=0.6, trt=False, tsize=None)
+2021-11-25 09:02:01.009 | INFO     | __main__:main:164 - Model Summary: Params: 99.00M, Gflops: 985.27
+2021-11-25 09:02:01.010 | INFO     | yolox.data.datasets.mot:__init__:39 - loading annotations into memory...
+2021-11-25 09:02:01.031 | INFO     | yolox.data.datasets.mot:__init__:39 - Done (t=0.02s)
+2021-11-25 09:02:01.031 | INFO     | pycocotools.coco:__init__:88 - creating index...
+2021-11-25 09:02:01.032 | INFO     | pycocotools.coco:__init__:88 - index created!
+2021-11-25 09:02:04.456 | INFO     | __main__:main:186 - loading checkpoint
+2021-11-25 09:02:04.965 | INFO     | __main__:main:191 - loaded checkpoint done.
+2021-11-25 09:02:04.965 | INFO     | __main__:main:197 - 	Fusing model...
+2021-11-25 09:06:14.563 | INFO     | yolox.evaluators.mot_evaluator:write_results:39 - save results to ./YOLOX_outputs/yolox_x_mix_mot20_ch/track_results/MOT20-04.txt
+2021-11-25 09:08:15.362 | INFO     | yolox.evaluators.mot_evaluator:write_results:39 - save results to ./YOLOX_outputs/yolox_x_mix_mot20_ch/track_results/MOT20-06.txt
+2021-11-25 09:09:21.096 | INFO     | yolox.evaluators.mot_evaluator:write_results:39 - save results to ./YOLOX_outputs/yolox_x_mix_mot20_ch/track_results/MOT20-07.txt
+2021-11-25 09:10:55.485 | INFO     | yolox.evaluators.mot_evaluator:write_results:39 - save results to ./YOLOX_outputs/yolox_x_mix_mot20_ch/track_results/MOT20-08.txt
+2021-11-25 09:10:55.535 | INFO     | yolox.evaluators.mot_evaluator:evaluate_prediction:631 - Evaluate in main process...
+2021-11-25 09:11:06.137 | INFO     | yolox.evaluators.mot_evaluator:evaluate_prediction:660 - Loading and preparing results...
+2021-11-25 09:11:11.035 | INFO     | yolox.evaluators.mot_evaluator:evaluate_prediction:660 - DONE (t=4.90s)
+2021-11-25 09:11:11.035 | INFO     | pycocotools.coco:loadRes:363 - creating index...
+2021-11-25 09:11:11.446 | INFO     | pycocotools.coco:loadRes:363 - index created!
+2021-11-25 09:11:15.148 | INFO     | __main__:main:218 - 
+Average forward time: 93.13 ms, Average track time: 17.28 ms, Average inference time: 110.41 ms
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = -1.000
+
+2021-11-25 09:11:15.149 | INFO     | __main__:main:235 - Found 4 groundtruths and 4 test files.
+2021-11-25 09:11:15.150 | INFO     | __main__:main:236 - Available LAP solvers ['lap', 'scipy']
+2021-11-25 09:11:15.150 | INFO     | __main__:main:237 - Default LAP solver 'lap'
+2021-11-25 09:11:15.150 | INFO     | __main__:main:238 - Loading files.
+2021-11-25 09:11:32.988 | WARNING  | __main__:compare_dataframes:122 - No ground truth for MOT20-07, skipping.
+2021-11-25 09:11:32.989 | WARNING  | __main__:compare_dataframes:122 - No ground truth for MOT20-04, skipping.
+2021-11-25 09:11:32.989 | WARNING  | __main__:compare_dataframes:122 - No ground truth for MOT20-06, skipping.
+2021-11-25 09:11:32.989 | WARNING  | __main__:compare_dataframes:122 - No ground truth for MOT20-08, skipping.
+2021-11-25 09:11:32.989 | INFO     | __main__:main:246 - Running metrics
+2021-11-25 09:11:33.001 | INFO     | __main__:main:271 - Completed
