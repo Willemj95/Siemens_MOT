@@ -13,9 +13,10 @@ if __name__ == "__main__":
     parser.add_argument("--path", type=str, help="path to images")
     parser.add_argument("--name",default="test.mp4", type=str, help="name of the video file")
     parser.add_argument("--format", default = '.jpg', help= "format of image, default is .jpg")
+    parser.add_argument("--fps", default =30, type=int, help="frames per second")
     args = parser.parse_args()
 
-def im2vid(image_path, video_path, image_format):
+def im2vid(image_path, name, image_format, fps):
     image_folder=image_path
     fps=30
     
@@ -23,6 +24,6 @@ def im2vid(image_path, video_path, image_format):
                    for img in os.listdir(image_folder)
                    if img.endswith(image_format)]
     clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=fps)
-    clip.write_videofile(args.name, codec="libx264")
+    clip.write_videofile(name, codec="libx264")
 
-im2vid(args.path, args.name, args.format)
+im2vid(args.path, args.name, args.format, args.fps)
