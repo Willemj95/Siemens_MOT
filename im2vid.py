@@ -23,6 +23,7 @@ def im2vid(image_path, name, image_format, fps):
     image_files = [os.path.join(image_folder,img)
                    for img in os.listdir(image_folder)
                    if img.endswith(image_format)]
+    image_files = sorted(image_files)
     clip = moviepy.video.io.ImageSequenceClip.ImageSequenceClip(image_files, fps=fps)
     clip.write_videofile(name, codec="libx264")
 
